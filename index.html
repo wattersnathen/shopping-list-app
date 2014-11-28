@@ -7,8 +7,16 @@
   <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-  <div id="container"></div>
+  <div id="container">
+    <input type="text" placeholder="enter item here" id="enter-item">
+    <button id="add-item-button">Add</button>
+    <div id="error-message"><p>Please enter an item.</p></div>
+    <div id="item-list">
+      <ul></ul>
+    </div>
+  </div>
 
   <script src="scripts/jquery-1.11.1.min.js"></script>
+  <script src="scripts/app.js"></script>
 </body>
 </html>
