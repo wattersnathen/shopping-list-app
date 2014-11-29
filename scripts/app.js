@@ -1,15 +1,27 @@
 $(document).ready(function() {
+  
+  var itemToAdd = $("#enter-item");
+
   $("#add-item-button").click(function() {
-    var itemEntered = $("#enter-item").val();
-    var itemList = $("#item-list ul");
-    
-    // Check if itemEntered has a value,
-    // empty strings are treated as false
-    if (itemEntered) {
+    addItemToList(itemToAdd);
+  });
+
+  $("#enter-item").keypress(function(event) {
+    if (event.which === 13) {
+      addItemToList(itemToAdd);
+    }
+  });
+
+  function addItemToList(item) {
+    if (item.val()) {
       $("#error-message").hide();
-      
+      var html = "<li><input type='text' value='" + item.val() + "'><button>edit</button><button>delete</button></li>";
+      $("#item-list ul").append(html);
+      item.val("");
     } else {
       $("#error-message").show();
     }
-  });
+    item.focus();
+  }
+
 });
