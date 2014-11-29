@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+#container {
+  width: 50%;
+  margin: 0 auto;
+}
+
 #error-message {
   display: none;
 }
@@ -13,5 +18,18 @@ ul {
 }
 
 input[type='text'] {
-  margin-right: 2em;
+  line-height: 1.5em;
+  padding: 0 1em;
 }
+
+#add-item-button {
+  margin-left: 0.75em;
+}
+
+button {
+  padding: 0 1em;
+  margin-left: 1em;
+  width: 75px;
+  line-height: 1.25em;
+}
+

@@ -12,10 +12,15 @@ $(document).ready(function() {
     }
   });
 
+  $("#item-list ul").on("click", "button", function() {
+    $(this).closest("li").remove(); // remove whole list item from DOM when delete is clicked
+  });
+
   function addItemToList(item) {
-    if (item.val()) {
+    var itemVal = item.val().trim();
+    if (itemVal) {
       $("#error-message").hide();
-      var html = "<li><input type='text' value='" + item.val() + "'><button>edit</button><button>delete</button></li>";
+      var html = "<li><input type='text' value='" + itemVal + "'><button class='delete'>Delete</button></li>";
       $("#item-list ul").append(html);
       item.val("");
     } else {
