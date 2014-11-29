@@ -17,14 +17,22 @@ $(document).ready(function() {
   });
 
   $("#item-list ul").on("click", "li", function() {
-    $(this).addClass("purchased-item");
+    $(this).find("input").toggleClass("purchased-item");
+  });
+
+  $(document).on("click", function() {
+    $(this).find("#item-list").find("input").attr("disabled", true);
+  });
+
+  $("#item-list ul").on("dblclick", "li", function() {
+    $(this).find("input").removeAttr("disabled");
   });
 
   function addItemToList(item) {
     var itemVal = item.val().trim();
     if (itemVal) {
       $("#error-message").hide();
-      var html = "<li><input type='text' value='" + itemVal + "'><button class='delete'>Delete</button></li>";
+      var html = "<li><input type='text' value='" + itemVal + "' disabled><button class='delete'>Delete</button></li>";
       $("#item-list ul").append(html);
       item.val("");
     } else {

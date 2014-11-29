@@ -2,11 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
 }
 
 #container {
-  width: 33%;
+  width: 35%;
   margin: 0 auto;
 }
 
@@ -27,14 +26,13 @@ ul {
 input[type='text'] {
   line-height: 1.75em;
   padding: 0 1em;
-  width: 75%;
+  width: 70%;
   margin-bottom: 0.25em;
 }
 
 button {
   padding: 0 1em;
-  margin-left: 0.2em;
-  width: 75px;
+  width: 20%;
   line-height: 1.7em;
   float: right;
 }
