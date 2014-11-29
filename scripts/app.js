@@ -16,6 +16,10 @@ $(document).ready(function() {
     $(this).closest("li").remove(); // remove whole list item from DOM when delete is clicked
   });
 
+  $("#item-list ul").on("click", "li", function() {
+    $(this).addClass("purchased-item");
+  });
+
   function addItemToList(item) {
     var itemVal = item.val().trim();
     if (itemVal) {
