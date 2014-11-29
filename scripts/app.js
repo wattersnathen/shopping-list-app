@@ -20,7 +20,7 @@ $(document).ready(function() {
     $(this).find("input").toggleClass("purchased-item");
   });
 
-  $(document).on("click", function() {
+  $(document).on("click", function() { // clicking anywhere on the document should add disabled back
     $(this).find("#item-list").find("input").attr("disabled", true);
   });
 

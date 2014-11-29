@@ -26,7 +26,7 @@ ul {
 input[type='text'] {
   line-height: 1.75em;
   padding: 0 1em;
-  width: 70%;
+  width: 78%;
   margin-bottom: 0.25em;
 }
 
@@ -35,6 +35,7 @@ button {
   width: 20%;
   line-height: 1.7em;
   float: right;
+  margin-left: 0.1em;
 }
 
 .purchased-item {
