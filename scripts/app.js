@@ -19,13 +19,17 @@ $(document).ready(function(){
       item.val("");
       quantity.val("1");
     } else {
-      alert("nothing to add");
+      alert("Nothing to add");
     }
     item.focus();
   }
 
   $("#add-button").click(function() {
     addItemToList($("#entered-text"), $("#entered-quantity"), itemsList);
+  });
+
+  itemsList.on("click", ".button-delete", function() {
+    $(this).closest("li").remove();
   });
 
 });
