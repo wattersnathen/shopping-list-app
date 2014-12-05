@@ -19,27 +19,12 @@
       <section id="enter-item">
         <input type="text" autofocus placeholder="enter item here...">
         <input type="number" name="quantity" min="1" value="1">
-        <input type="button" value="+ Add">
+        <input type="button" value="+ Add" id="add-button">
       </section>
 
       <section id="items-to-purchase">
         <h2>Items</h2>
-        <ul id="items">
-          <li class="item">
-            <input type="checkbox">
-            <input type="text">
-            <input type="number" min="1">
-            <input type="button" value="Edit">
-            <input type="button" value="Delete">
-          </li>
-          <li class="item">
-            <input type="checkbox" checked="checked" disabled="disabled">
-            <input type="text" placeholder="...value..." disabled="disabled" value="some value">
-            <input type="number" min="1" disabled="disabled" value="1">
-            <input type="button" value="Edit">
-            <input type="button" value="Delete">
-          </li>
-        </ul>
+        <ul id="items"></ul>
       </section>
 
       <section id="items-purchased">
