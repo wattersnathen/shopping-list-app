@@ -10,6 +10,10 @@
   box-sizing: border-box;
 }
 
+ul {
+  list-style: none;
+}
+
 html,
 body,
 #container {
@@ -27,6 +31,11 @@ body,
 
 #sub-container {
   width: 80%;
+  margin: 0 auto;
+}
+
+#enter-item {
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -76,20 +85,40 @@ input {
   margin-bottom: 0.75em;
 }
 
+input:hover {
+  box-shadow: 0px 0px 3px 3px rgba(255,255,255,0.75);
+}
+
 input[type="button"] {
   font-weight: bold;
 }
 
+input[type="button"]:hover {
+  background-color: #208181;
+  color: white;
+}
+
+input[type="checkbox"] {
+  transform: scale(4.5);
+  margin: 0 1em;
+  box-shadow: none;
+  cursor: pointer;
+}
+
 input[type="text"] {
+  width: 60%;
+}
+
+input[type="text"]:disabled,
+input[type="number"]:disabled {
+  background-color: #A6CDCD;
+}
+
+#enter-item input[type="text"] {
   width: 75%;
 }
 
 input[type="number"] {
-  width: 3.25em;
+  width: 4em;
   text-align: center;
-}
-
-#enter-item {
-  width: 100%;
-  margin: 0 auto;
 }
