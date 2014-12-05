@@ -22,22 +22,28 @@ body,
   width: 80%;
   margin: 0 auto;
   background-color: #2EB8B8;
+  padding: 2em;
 }
 
+#sub-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* Styling for all header items */
 #app-heading {
-  padding: 2em;
   position: relative;
+  margin-bottom: 3em;
 }
 
 #diamond {
-  height: 8em;
-  width: 8em;
+  height: 8rem;
+  width: 8rem;
   position: absolute;
-  top: 2.4em;
-  left: 7.5em;
+  top: 0.5em;
+  left: 6.5em;
   transform: rotate(45deg);
   background-color: #208181;
-
   box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.75);
 }
 
@@ -49,4 +55,41 @@ body,
   text-align: center;
   padding: 0.045em;
   box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.75);
+}
+
+/* list(s) styling */
+h2 {
+  font-size: 3em;
+  font-weight: bold;
+  padding-left: 0.5em;
+}
+
+#items-purchased {
+  display: none; /* don't display until at least 1 item exists within the list */
+}
+
+/* Styling for all input fields */
+input {
+  padding: 0.75em;
+  box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.75);
+  font-size: 1.25em;
+  margin-bottom: 0.75em;
+}
+
+input[type="button"] {
+  font-weight: bold;
+}
+
+input[type="text"] {
+  width: 75%;
+}
+
+input[type="number"] {
+  width: 3.25em;
+  text-align: center;
+}
+
+#enter-item {
+  width: 100%;
+  margin: 0 auto;
 }
