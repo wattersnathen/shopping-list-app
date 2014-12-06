@@ -1,11 +1,11 @@
 $(document).ready(function(){
 
   var listItem = "<li class='item'>" +
-                 "<input type='checkbox'>" +
+                 "<input type='checkbox' name='checkbox'>" +
                  "<input type='text' value='%data%'>" +
                  "<input type='number' min='1' value='%qty%'>" +
-                 "<input type='button' value='Edit' class='button-edit'>" +
-                 "<input type='button' value='Delete' class='button-delete'>" +
+                 "<input type='button' value='Edit' name='btn-edit'>" +
+                 "<input type='button' value='Delete' name='btn-delete'>" +
                  "</li>",
       itemsList = $("#items"),          // list of items currently left to purchase
       purchasedList = $("#purchased");  // list of items that have been purchased
@@ -27,9 +27,19 @@ $(document).ready(function(){
   $("#add-button").click(function() {
     addItemToList($("#entered-text"), $("#entered-quantity"), itemsList);
   });
-
-  itemsList.on("click", ".button-delete", function() {
+  
+  $("#items, #purchased").on("click", "input[name='btn-delete']", function() {
     $(this).closest("li").remove();
+  }).on("click", "input[name='checkbox']", function() {
+    var item = $(this).closest("li");
+    
+    if (item.closest("ul").attr("id") === "items") {
+      $("#purchased").append(item);  
+    } else if (item.closest("ul").attr("id") === "purchased") {
+      $("#items").append(item);
+    }
   });
+
+  $("#items-purchased").show();
 
 });
