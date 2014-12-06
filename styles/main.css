@@ -79,7 +79,8 @@ h2 {
   padding-left: 0.5em;
 }
 
-#items-purchased {
+#items-purchased,
+#items-to-purchase {
   display: none; /* don't display until at least 1 item exists within the list */
 }
 

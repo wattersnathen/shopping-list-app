@@ -24,32 +24,42 @@ $(document).ready(function(){
     item.focus();
   }
 
-  function isPurchasedListEmpty() {
-    if ($("#purchased li").length == 0) {
+  function areListsEmpty() {
+    if ($("#purchased li").length === 0) {
       $("#items-purchased").hide();
     } else {
       $("#items-purchased").show();
+    }
+
+    $("#items-to-purchase").show();
+
+    if ($("#items li").length != 0) {
+      $("#items-to-purchase").show();
+    } else {
+      $("#items-to-purchase").hide();
     }
   }
 
   $("#add-button").click(function() {
     addItemToList($("#entered-text"), $("#entered-quantity"), itemsList);
+    areListsEmpty();
   });
   
   $("#items, #purchased")
     .on("click", "input[name='btn-delete']", function() {
       $(this).closest("li").remove();
-      isPurchasedListEmpty();
+      areListsEmpty();
   })
     .on("click", "input[name='checkbox']", function() {
       var item = $(this).closest("li");
       
       if (item.closest("ul").attr("id") === "items") {
         $("#purchased").append(item);  
+
       } else if (item.closest("ul").attr("id") === "purchased") {
         $("#items").append(item);
       }
-      isPurchasedListEmpty();
+      areListsEmpty();
   });
 
 });
