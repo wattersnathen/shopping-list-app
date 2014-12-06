@@ -31,13 +31,17 @@ $(document).ready(function(){
       $("#items-purchased").show();
     }
 
-    $("#items-to-purchase").show();
-
-    if ($("#items li").length != 0) {
-      $("#items-to-purchase").show();
-    } else {
+    if ($("#items li").length === 0) {
       $("#items-to-purchase").hide();
+    } else {
+      $("#items-to-purchase").show();
     }
+
+    // add and remove attributes
+    $(".item").each(function(index) {
+      $("#purchased input[type='text'], #purchased input[type='number']").attr("disabled", "disabled");
+      $("#items input[type='text'], #items input[type='number']").removeAttr("disabled");
+    });
   }
 
   $("#add-button").click(function() {
@@ -51,15 +55,33 @@ $(document).ready(function(){
       areListsEmpty();
   })
     .on("click", "input[name='checkbox']", function() {
-      var item = $(this).closest("li");
+      var item = $(this).closest("li"),
+          id = item.closest("ul").attr("id");
       
-      if (item.closest("ul").attr("id") === "items") {
-        $("#purchased").append(item);  
-
-      } else if (item.closest("ul").attr("id") === "purchased") {
+      if (id === "items") {
+        $("#purchased").append(item);
+        
+      } else if (id === "purchased") {
         $("#items").append(item);
+
       }
       areListsEmpty();
-  });
+  })
+    .on("click", "input[name='btn-edit']", function() {
+      var input = $(this).closest("li"),
+          text = input.find("input[type='text']"),
+          number = input.find("input[type='number']");
+      if (text.attr("disabled")) {
+        text.removeAttr("disabled");
+      } else {
+        text.attr("disabled", "disabled");
+      }
+
+      if (number.attr("disabled")) {
+        number.removeAttr("disabled");
+      } else {
+        number.attr("disabled", "disabled");
+      }
+    });
 
 });
