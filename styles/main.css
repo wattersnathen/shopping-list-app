@@ -35,7 +35,7 @@ body {
 }
 
 #sub-container {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   padding:1.5em;
 }
@@ -43,6 +43,11 @@ body {
 #enter-item {
   width: 100%;
   margin: 0 auto;
+}
+
+.item {
+  padding: 0.5em;
+  border: 1px solid green;
 }
 
 /* Styling for all header items */
@@ -122,7 +127,7 @@ input[type="checkbox"]:checked + input[type="text"] {
 }
 
 input[type="text"] {
-  width: 60%;
+  width: 55%;
 }
 
 input[disabled] {

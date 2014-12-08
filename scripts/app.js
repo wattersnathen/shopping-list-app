@@ -84,4 +84,8 @@ $(document).ready(function(){
       }
     });
 
+    $("#items, #purchased").sortable({
+      connectWith: ".connectedSortable",
+      cursor: "move"
+    });
 });
