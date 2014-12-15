@@ -1,0 +1,117 @@
+*,
+*:before
+*:after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: 'Shadows Into Light Two', cursive;
+  background-color: #D5F1F1;
+  overflow-y: scroll;
+}
+
+ul {
+  list-style-type: none;
+  text-align: center;
+}
+
+#container {
+  min-height: 100%;
+  width: 70%;
+  margin: 0 auto;
+  padding: 2em;
+  background-color: #2EB8B8;
+}
+
+/* Header styling */
+#page-header {
+  width: 90%;
+  margin: 0 auto 2.5em auto;
+}
+
+#headline {
+  font-size: 5.2em;
+  text-align: center;
+  background: #A6CDCD;
+}
+
+#diamond {
+  height: 8em;
+  width: 8em;
+  background-color: #208181;
+  transform: rotate(45deg);
+  position: absolute;
+}
+
+/* Clear and Save buttons styling */
+#menu-options {
+  width: 90%;
+  margin: 0 auto 2em auto;
+}
+
+#menu-options li {
+  display: inline-block;
+  padding: 0.3em 1.5em;
+  font-size: 1.25em;
+  background: #A6CDCD;
+}
+
+/* Enter item section styling */
+#enter-item {
+  width: 90%;
+  margin: 0 auto 0.7em auto;
+  text-align: center;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid #000;
+}
+
+/* Item, Purchased items styling */
+#sub-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+#sub-container h2 {
+  font-size: 3.1em;
+  text-align: center;
+  margin: 0.3em 0;
+}
+
+/* Styling for all input fields */
+input {
+  padding: 0.3em 1em;
+  font-size: 1.25em;
+}
+
+input[disabled] {
+  background-color: #A6CDCD;
+}
+
+input[type="number"] {
+  padding: 0.3em 0.5em;
+  max-width: 3.25em;
+}
+
+input[type="checkbox"] {
+  transform: scale(2.5);
+  margin-right: 0.3em;
+}
+
+input[type="checkbox"]:checked + input[type="text"] {
+  text-decoration: line-through;
+}
+
+input[type="text"] {
+  width: 50%;
+}

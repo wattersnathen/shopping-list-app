@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  var listItem = "<li class='item'>" +
+  var listItem = "<li class='item ui-state-default'>" +
                  "<input type='checkbox' name='checkbox'>" +
                  "<input type='text' value='%data%'>" +
                  "<input type='number' min='1' value='%qty%'>" +
