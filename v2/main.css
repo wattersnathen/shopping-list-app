@@ -76,6 +76,14 @@ ul {
   border-bottom: 1px solid #000;
 }
 
+#no-item-entered-error {
+  margin: 0.35em;
+  background: #7a0808;
+  text-align: center;
+  font-size: 1.5em;
+  color: #ddd;
+}
+
 /* Item, Purchased items styling */
 #sub-container {
   width: 90%;
