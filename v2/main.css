@@ -24,7 +24,11 @@ body {
 ul {
   list-style-type: none;
   text-align: center;
-  min-height: 50px;
+  min-height: 2em;
+}
+
+#items-purchased {
+  min-height: 5em;
 }
 
 li:hover {

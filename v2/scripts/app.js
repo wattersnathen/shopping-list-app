@@ -69,11 +69,25 @@ $(document).ready(function() {
     }
   });
 
+  function changeCheckbox(event, ui) {
+
+  }
+
   // Use jQuery-UI sortable to enable drag and drop between the two lists
   $(".items").sortable({
     cursor: "move",
     opacity: 0.6,
-    connectWith: ".items"
+    connectWith: ".items",
+    update: function changeCheckbox(event, ui) {
+      var item = $(this).find(".item"),
+      checkbox = item.find("input[type='checkbox']");
+
+      if (checkbox.is(":checked")) {
+        checkbox.prop("checked", false);
+      } else {
+        checkbox.prop("checked", true);
+      }
+    }
   });
 
 });
