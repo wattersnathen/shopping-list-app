@@ -69,25 +69,33 @@ $(document).ready(function() {
     }
   });
 
-  function changeCheckbox(event, ui) {
-
-  }
-
   // Use jQuery-UI sortable to enable drag and drop between the two lists
   $(".items").sortable({
     cursor: "move",
     opacity: 0.6,
     connectWith: ".items",
     update: function changeCheckbox(event, ui) {
-      var item = $(this).find(".item"),
-      checkbox = item.find("input[type='checkbox']");
-
-      if (checkbox.is(":checked")) {
-        checkbox.prop("checked", false);
-      } else {
-        checkbox.prop("checked", true);
-      }
+      ensureCheckboxStatesAreValid();
     }
   });
 
+  function ensureCheckboxStatesAreValid() {
+    $.each(itemsOnList, function(idx, value) {
+      $(this).find("input[type='checkbox']").prop("checked", false);
+    });
+
+    $.each(purchasedList, function(idx, value) {
+      $(this).find("input[type='checkbox']").prop("checked", true);
+    });
+  }
+
+  // localStorage, saving the list(s) on the client
+  function supportsLocalStorage() {
+    // check for localStorage
+    try {
+      return 'localStorage' in window && window['localStorage'] !== null;
+    } catch (e) {
+      return false;
+    }
+  }
 });
