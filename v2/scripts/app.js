@@ -69,4 +69,11 @@ $(document).ready(function() {
     }
   });
 
+  // Use jQuery-UI sortable to enable drag and drop between the two lists
+  $(".items").sortable({
+    cursor: "move",
+    opacity: 0.6,
+    connectWith: ".items"
+  });
+
 });
