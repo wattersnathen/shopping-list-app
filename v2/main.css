@@ -84,14 +84,18 @@ ul {
 
 #sub-container h2 {
   font-size: 3.1em;
-  text-align: center;
-  margin: 0.3em 0;
+  margin-left: 1.7em;
+}
+
+#sub-container ul li {
+  margin: 0 auto 0.5em auto;
 }
 
 /* Styling for all input fields */
 input {
   padding: 0.3em 1em;
   font-size: 1.25em;
+  margin-right: 0.3em;
 }
 
 input[disabled] {
@@ -105,7 +109,7 @@ input[type="number"] {
 
 input[type="checkbox"] {
   transform: scale(2.5);
-  margin-right: 0.3em;
+  margin-right: 0.52em;
 }
 
 input[type="checkbox"]:checked + input[type="text"] {

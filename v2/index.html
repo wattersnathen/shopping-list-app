@@ -26,35 +26,21 @@
     </ul>
 
     <div id="enter-item">
-      <input type="text" placeholder="enter item here...">
-      <input type="number" min="1" value="1">
-      <input type="submit" value="+ Add">
+      <input type="text" id="entered-item-text" placeholder="enter item here..." autofocus>
+      <input type="number" id="entered-item-quantity" min="1" value="1">
+      <input type="submit" value="+ Add" id="add-button">
     </div><!-- end of enter-item div -->
     
     <div id="sub-container">
-      <section id="items">
+      <section id="itemsList">
         <h2>Items</h2>
         <ul id="items-to-purchase" class="items">
-          <li class="item">
-            <input type="checkbox">
-            <input type="text" value="item one"disabled="disabled">
-            <input type="number" min="1" value="1"disabled="disabled">
-            <input type="button" value="Edit">
-            <input type="button" value="Delete">
-          </li>
         </ul>
       </section>
 
       <section id="purchased">
         <h2>Purchased</h2>
         <ul id="items-purchased" class="items">
-          <li class="item">
-            <input type="checkbox">
-            <input type="text" value="item two" disabled="disabled">
-            <input type="number" min="1" value="1"disabled="disabled">
-            <input type="button" value="Edit">
-            <input type="button" value="Delete">
-          </li>
         </ul>
       </section>
     </div><!-- end of sub-container -->
