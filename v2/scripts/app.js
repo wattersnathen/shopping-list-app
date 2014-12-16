@@ -4,8 +4,8 @@ $(document).ready(function() {
               "<input type='checkbox'>" +
               "<input type='text' value='%data%' disabled='disabled'>" +
               "<input type='number' min='1' value='%qty%' disabled='disabled'>" +
-              "<input type='button' value='Edit'>" +
-              "<input type='button' value='Delete'>" +
+              "<input type='button' value='Edit' class='btn-edit'>" +
+              "<input type='button' value='Delete' class='btn-delete'>" +
               "</li>",
       itemsOnList = $("#items-to-purchase"),  // list of items yet to be purchased (not checked off)
       purchasedList = $("#items-purchased");  // list of items already purchased (checked off)
@@ -43,6 +43,11 @@ $(document).ready(function() {
     } else if (listID === "items-to-purchase") {
       $("#items-purchased").append(item);
     }
+  });
+
+  // Remove 'item' from DOM when delete button is clicked
+  $(".items").on("click", ".btn-delete", function removeItemFromDOM() {
+    $(this).closest("li").remove();
   });
 
 });
