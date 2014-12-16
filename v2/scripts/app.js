@@ -23,11 +23,11 @@ $(document).ready(function() {
       // clear out the data in the entered item fields
       itemToAdd.val("");
       itemQty.val("1");
-    } else { // no text was entered into the text field
-      $("#no-item-entered-error").show().delay(1800).fadeOut(900);
+    } else { // no text was entered into the text field, show error message
+      $("#no-item-entered-error").show().delay(1800).fadeOut(900); // don't leave error on screen for long
     }
 
-    itemToAdd.focus();
+    itemToAdd.focus(); // return focus to the enter item text field for quicker entries
 
   }); // end of #add-button click handler
 
