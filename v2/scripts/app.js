@@ -50,4 +50,23 @@ $(document).ready(function() {
     $(this).closest("li").remove();
   });
 
+  // Enabled list inputs when edit button is clicked. 
+  $(".items").on("click", ".btn-edit", function enableInputs() {
+    var input = $(this).closest("li"),
+        textField = input.find("input[type='text']"),
+        qtyField  = input.find("input[type='number']");
+
+    if (textField.attr("disabled")) {
+      textField.removeAttr("disabled");
+    } else {
+      textField.attr("disabled", "disabled");
+    }
+
+    if (qtyField.attr("disabled")) {
+      qtyField.removeAttr("disabled");
+    } else {
+      qtyField.attr("disabled", "disabled");
+    }
+  });
+
 });

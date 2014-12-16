@@ -87,7 +87,7 @@ ul {
   margin-left: 1.7em;
 }
 
-#sub-container ul li {
+.item {
   margin: 0 auto 0.5em auto;
 }
 
