@@ -19,12 +19,12 @@ $(document).ready(function() {
 
     if (trimedItem) {
       itemsOnList.append(item.replace("%data%", trimedItem).replace("%qty%", trimedQty));
-      $("#no-item-entered-error").hide();
+      
       // clear out the data in the entered item fields
       itemToAdd.val("");
       itemQty.val("1");
     } else { // no text was entered into the text field
-      $("#no-item-entered-error").show().delay(2200).fadeOut(900);
+      $("#no-item-entered-error").show().delay(1800).fadeOut(900);
     }
 
     itemToAdd.focus();
