@@ -27,11 +27,15 @@ ul {
   min-height: 2em;
 }
 
+#menu-options li:hover {
+  cursor: pointer;
+}
+
 #items-purchased {
   min-height: 5em;
 }
 
-li:hover {
+.item:hover {
   cursor: move;
 }
 

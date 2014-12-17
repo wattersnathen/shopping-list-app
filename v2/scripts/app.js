@@ -11,7 +11,7 @@ $(document).ready(function() {
       purchasedList = $("#items-purchased");  // list of items already purchased (checked off)
 
   // Add item to itemsOnList when +Add is clicked...
-  $("#add-button").on("click", function addItemOnClick() {
+  function addItem(evt) {
     var itemToAdd = $("#entered-item-text"),
         itemQty   = $("#entered-item-quantity"),
         trimedItem= itemToAdd.val().trim(),
@@ -27,10 +27,16 @@ $(document).ready(function() {
       $("#no-item-entered-error").show().delay(1800).fadeOut(900); // don't leave error on screen for long
     }
 
-    itemToAdd.focus(); // return focus to the enter item text field for quicker entries
+    itemToAdd.focus();
+  }
+  $("#add-button").on("click", function addOnClick(evt){addItem(evt);}); // end of #add-button click handler
 
-  }); // end of #add-button click handler
-
+  // Allow the user to press the enter key while focus is in enter-time to add items
+  $("#enter-item").on("keypress", "input", function addOnEnter(evt){
+    if (evt.which == 13) {
+      addItem(evt);
+    }
+  });
 
   // Add item to purchased list when checkbox is clicked
   $(".items").on("click", "input[type='checkbox']", function changeList() {
@@ -90,6 +96,9 @@ $(document).ready(function() {
   }
 
   // localStorage, saving the list(s) on the client
+
+  $("#save-options").on("click", saveLists);
+
   function supportsLocalStorage() {
     // check for localStorage
     try {
@@ -98,4 +107,20 @@ $(document).ready(function() {
       return false;
     }
   }
+
+  function saveLists() {
+    if (!supportsLocalStorage()) { return false; }
+    localStorage["itemsOnList"] = itemsOnList;
+    localStorage["purchasedList"] = purchasedList;
+
+    return true;
+  }
+
+  function resumeState() {
+    if (!supportsLocalStorage()) { return false; }
+    itemsNotPurchased = localStorage["itemsOnList"];
+    itemsPurchased = localStorage["purchasedList"];
+    return true;
+  }
+
 });
