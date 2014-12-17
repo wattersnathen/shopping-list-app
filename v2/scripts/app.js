@@ -77,11 +77,13 @@ $(document).ready(function() {
   // Enabled list inputs when edit button is clicked. 
   $(".items").on("click", ".btn-edit", toggleDisabled);
   $(".items").on("dblclick", "input[type='text'], input[type='number']", toggleDisabled);
+
   // Use jQuery-UI sortable to enable drag and drop between the two lists
   $(".items").sortable({
     cursor: "move",
     opacity: 0.6,
     connectWith: ".items",
+    scroll: false,
     update: function changeCheckbox(event, ui) {
       ensureCheckboxStatesAreValid();
     }
