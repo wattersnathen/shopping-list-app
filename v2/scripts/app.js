@@ -56,8 +56,7 @@ $(document).ready(function() {
     $(this).closest("li").remove();
   });
 
-  // Enabled list inputs when edit button is clicked. 
-  $(".items").on("click", ".btn-edit", function enableInputs() {
+  function toggleDisabled() {
     var input = $(this).closest("li"),
         textField = input.find("input[type='text']"),
         qtyField  = input.find("input[type='number']");
@@ -73,8 +72,11 @@ $(document).ready(function() {
     } else {
       qtyField.attr("disabled", "disabled");
     }
-  });
+  }
 
+  // Enabled list inputs when edit button is clicked. 
+  $(".items").on("click", ".btn-edit", toggleDisabled);
+  $(".items").on("dblclick", "input[type='text'], input[type='number']", toggleDisabled);
   // Use jQuery-UI sortable to enable drag and drop between the two lists
   $(".items").sortable({
     cursor: "move",
