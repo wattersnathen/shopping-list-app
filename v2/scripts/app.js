@@ -32,7 +32,7 @@ $(document).ready(function() {
   $("#add-button").on("click", function addOnClick(evt){addItem(evt);}); // end of #add-button click handler
 
   // Allow the user to press the enter key while focus is in enter-time to add items
-  $("#enter-item").on("keypress", "input", function addOnEnter(evt){
+  $("#enter-item").on("keydown", "input", function addOnEnter(evt){
     if (evt.which == 13) {
       addItem(evt);
     }
@@ -99,32 +99,23 @@ $(document).ready(function() {
     });
   }
 
-  // localStorage, saving the list(s) on the client
+  $("#save-options").on("click", function saveLists() {
+    localStorage.setItem("items", itemsOnList.html());
+    localStorage.setItem("purchased", purchasedList.html());
 
-  $("#save-options").on("click", saveLists);
+  });
 
-  function supportsLocalStorage() {
-    // check for localStorage
-    try {
-      return 'localStorage' in window && window['localStorage'] !== null;
-    } catch (e) {
-      return false;
-    }
-  }
+  $("#clear-options").on("click", function clearLists() {
+    window.localStorage.clear();
+    location.reload();
+  });
 
-  function saveLists() {
-    if (!supportsLocalStorage()) { return false; }
-    localStorage["itemsOnList"] = itemsOnList;
-    localStorage["purchasedList"] = purchasedList;
-
-    return true;
-  }
-
-  function resumeState() {
-    if (!supportsLocalStorage()) { return false; }
-    itemsNotPurchased = localStorage["itemsOnList"];
-    itemsPurchased = localStorage["purchasedList"];
-    return true;
+  if (localStorage.getItem("items") && localStorage.getItem("purchased")) {
+    var items = localStorage.getItem("items");
+    var purchased = localStorage.getItem("purchased");
+    itemsOnList.html(items);
+    purchasedList.html(purchased);
+    ensureCheckboxStatesAreValid();     
   }
 
 });
