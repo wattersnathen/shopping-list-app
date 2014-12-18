@@ -65,12 +65,18 @@ $(document).ready(function() {
       textField.removeAttr("disabled");
     } else {
       textField.attr("disabled", "disabled");
+
+      // need to update the value attritube on the DOM otherwise the change will not save
+      textField.attr("value", textField.val());
     }
 
     if (qtyField.attr("disabled")) {
       qtyField.removeAttr("disabled");
     } else {
       qtyField.attr("disabled", "disabled");
+      
+      // need to update the value attritube on the DOM otherwise the change will not save
+      qtyField.attr("value", qtyField.val());
     }
   }
 
@@ -102,11 +108,10 @@ $(document).ready(function() {
   $("#save-options").on("click", function saveLists() {
     localStorage.setItem("items", itemsOnList.html());
     localStorage.setItem("purchased", purchasedList.html());
-
   });
 
   $("#clear-options").on("click", function clearLists() {
-    window.localStorage.clear();
+    localStorage.clear();
     location.reload();
   });
 
