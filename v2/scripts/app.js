@@ -36,6 +36,15 @@ $(document).ready(function() {
         });
       }
     });
+
+    enquire.register("screen and (min-width: 501px)", {
+      match: function() {
+        var allItems = $(".item");
+        $.each(allItems, function retainCheckbox(idx, value) {
+          $(this).find("input[type='checkbox']").insertBefore($(this).find("input[type='text']"));
+        });
+      }
+    })
   }
   $("#add-button").on("click", function addOnClick(evt){addItem(evt);}); // end of #add-button click handler
 
