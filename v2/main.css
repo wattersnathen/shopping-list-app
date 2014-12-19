@@ -141,11 +141,6 @@ input[type="checkbox"]:checked + input[type="text"] {
 input[type="text"] {
   width: 50%;
 }
-@media screen and (max-width: 360px) {
-  input[type="text"] {
-    width: 100%;
-  }
-}
 
 @media screen and (max-width: 500px) {
   #container {
