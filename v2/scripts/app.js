@@ -130,8 +130,11 @@ $(document).ready(function() {
       $.each(allItems, function moveCheckbox(idx, value) {
         $(this).find("input[type='checkbox']").insertAfter($(this).find("input[type='text']"));
       });
-    },
-    unmatch: function() {
+    }
+  });
+
+  enquire.register("screen and (min-width: 421px)", {
+    match: function() {
       var allItems = $(".item");
       $.each(allItems, function retainCheckbox(idx, value) {
         $(this).find("input[type='checkbox']").insertBefore($(this).find("input[type='text']"));
