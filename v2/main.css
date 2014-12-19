@@ -141,3 +141,17 @@ input[type="checkbox"]:checked + input[type="text"] {
 input[type="text"] {
   width: 50%;
 }
+
+@media screen and (max-width: 360px) {
+  #container {
+    width: 98%;
+    padding: 0.75em;
+  }
+  #page-header {
+    width: 98%;
+  }
+  #headline {
+    z-index: 9999;
+    font-size: 3.2em;
+  }
+}
