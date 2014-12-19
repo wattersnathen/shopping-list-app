@@ -156,13 +156,4 @@ $(document).ready(function() {
     }
   }).listen();
 
-  enquire.register("screen and (min-width: 501px)", {
-    match: function() {
-      var allItems = $(".item");
-      $.each(allItems, function retainCheckbox(idx, value) {
-        $(this).find("input[type='checkbox']").insertBefore($(this).find("input[type='text']"));
-      });
-    }
-  }).listen();
-
 });
