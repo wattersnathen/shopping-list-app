@@ -132,7 +132,7 @@ $(document).ready(function() {
     ensureCheckboxStatesAreValid();     
   }
 
-  enquire.register("screen and (max-width: 500px)", {
+  enquire.register("screen and (max-width: 800px)", {
     // move the checkbox(es) below the text input
     match: function() {
       var allItems = $(".item");
