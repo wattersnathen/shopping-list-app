@@ -28,6 +28,15 @@ $(document).ready(function() {
     }
 
     itemToAdd.focus();
+    enquire.register("screen and (max-width: 500px)", {
+      // move the checkbox(es) below the text input
+      match: function() {
+        var allItems = $(".item");
+        $.each(allItems, function moveCheckbox(idx, value) {
+          $(this).find("input[type='checkbox']").insertAfter($(this).find("input[type='text']"));
+        });
+      }
+    });
   }
   $("#add-button").on("click", function addOnClick(evt){addItem(evt);}); // end of #add-button click handler
 
