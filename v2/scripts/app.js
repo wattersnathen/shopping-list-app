@@ -146,6 +146,6 @@ $(document).ready(function() {
         $(this).find("input[type='checkbox']").insertBefore($(this).find("input[type='text']"));
       });
     }
-  }).listen();
+  });
 
 });
