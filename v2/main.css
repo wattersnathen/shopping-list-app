@@ -144,14 +144,58 @@ input[type="text"] {
 
 @media screen and (max-width: 360px) {
   #container {
-    width: 98%;
-    padding: 0.75em;
+    width: 100%;
+    padding: 0.3em;
+    margin: 0 auto;
   }
   #page-header {
-    width: 98%;
+    width: 100%;
+    margin: 0 auto 0.5em auto;
   }
   #headline {
-    z-index: 9999;
-    font-size: 3.2em;
+    font-size: 2.5em;
+    padding: 0.2em;
+  }
+  #diamond {
+    display: none;
+  }
+  #menu-options {
+    width: 100%;
+    margin: 0 auto 0.5em auto;
+  }
+  #menu-options li {
+    padding: 0.1em 0.5em;
+    font-size: 1em;
+  }
+  #enter-item {
+    width: 100%;
+    padding-bottom: 0.5em;
+    margin: 0;
+  }
+  #no-item-entered-error {
+    margin: 0.5em;
+    padding: 0.5em;
+    font-size: 1.1em;
+  }
+  input[type="text"] {
+    width: 100%;
+    margin-bottom: 0.2em;
+  }
+  input[type="number"] {
+    padding: 0.1em;
+    max-width: 2.5em;
+  }
+  input {
+    padding: 0.3em 0.5em;
+    font-size: 1em;
+    margin-right: 0.3em;
+  }
+  #sub-container {
+    width: 100%;
+  }
+  #sub-container h2 {
+    font-size: 2.3em;
+    margin: 0;
+    text-align: center;
   }
 }
