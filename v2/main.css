@@ -178,7 +178,7 @@ input[type="text"] {
     font-size: 1.1em;
   }
   input[type="text"] {
-    width: 100%;
+    width: 95%;
     margin-bottom: 0.2em;
   }
   input[type="number"] {
@@ -186,7 +186,7 @@ input[type="text"] {
     max-width: 2.5em;
   }
   input {
-    padding: 0.3em 0.5em;
+    padding: 0.3em 0.75em;
     font-size: 1em;
     margin-right: 0.3em;
   }
