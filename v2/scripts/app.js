@@ -28,23 +28,6 @@ $(document).ready(function() {
     }
 
     itemToAdd.focus();
-    // enquire.register("screen and (max-width: 500px)", {
-    //   match: function() {
-    //     var allItems = $(".item");
-    //     $.each(allItems, function moveCheckbox(idx, value) {
-    //       $(this).find("input[type='checkbox']").insertAfter($(this).find("input[type='text']"));
-    //     });
-    //   }
-    // });
-
-    // enquire.register("screen and (min-width: 501px)", {
-    //   match: function() {
-    //     var allItems = $(".item");
-    //     $.each(allItems, function retainCheckbox(idx, value) {
-    //       $(this).find("input[type='checkbox']").insertBefore($(this).find("input[type='text']"));
-    //     });
-    //   }
-    // });
   }
   $("#add-button").on("click", function addOnClick(evt){addItem(evt);}); // end of #add-button click handler
 
