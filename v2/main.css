@@ -142,7 +142,7 @@ input[type="text"] {
   width: 50%;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 500px) {
   #container {
     width: 100%;
     padding: 0.3em;

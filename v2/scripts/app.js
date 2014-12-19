@@ -123,7 +123,7 @@ $(document).ready(function() {
     ensureCheckboxStatesAreValid();     
   }
 
-  enquire.register("screen and (max-width: 480px)", {
+  enquire.register("screen and (max-width: 500px)", {
     // move the checkbox(es) below the text input
     match: function() {
       var allItems = $(".item");
@@ -133,7 +133,7 @@ $(document).ready(function() {
     }
   });
 
-  enquire.register("screen and (min-width: 481px)", {
+  enquire.register("screen and (min-width: 501px)", {
     match: function() {
       var allItems = $(".item");
       $.each(allItems, function retainCheckbox(idx, value) {
