@@ -10,6 +10,30 @@ $(document).ready(function() {
       itemsOnList = $("#items-to-purchase"),  // list of items yet to be purchased (not checked off)
       purchasedList = $("#items-purchased");  // list of items already purchased (checked off)
 
+  function registerEnquire() {
+    enquire.register("(max-width: 570px)", {
+      match: function() {
+        var allItems = $(".item");
+        $.each(allItems, function (index, value) {
+          var checkbox = $(this).find("input[type='checkbox']"),
+              text = $(this).find("input[type='text']");
+
+          // insert the checkbox after the text input
+          checkbox.insertAfter(text);
+          
+        });
+      }
+    });
+    enquire.register("(min-width: 571px)", {
+      match: function() {
+        var allItems = $(".item");
+        $.each(allItems, function (index, value) {
+          $(this).find("input[type='checkbox']").insertBefore($(this).find("input[type='text']"));
+        });
+      }
+    });
+  }
+
   // Add item to itemsOnList when +Add is clicked...
   function addItem(evt) {
     var itemToAdd = $("#entered-item-text"),
@@ -28,15 +52,7 @@ $(document).ready(function() {
     }
 
     itemToAdd.focus();
-    enquire.register("screen and (max-width: 500px)", {
-      // move the checkbox(es) below the text input
-      match: function() {
-        var allItems = $(".item");
-        $.each(allItems, function moveCheckbox(idx, value) {
-          $(this).find("input[type='checkbox']").insertAfter($(this).find("input[type='text']"));
-        });
-      }
-    });
+    registerEnquire();
   }
   $("#add-button").on("click", function addOnClick(evt){addItem(evt);}); // end of #add-button click handler
 
@@ -58,6 +74,8 @@ $(document).ready(function() {
     } else if (listID === "items-to-purchase") {
       $("#items-purchased").append(item);
     }
+
+    ensureCheckboxStatesAreValid();
   });
 
   // Remove 'item' from DOM when delete button is clicked
@@ -107,10 +125,12 @@ $(document).ready(function() {
   function ensureCheckboxStatesAreValid() {
     $.each(itemsOnList, function(idx, value) {
       $(this).find("input[type='checkbox']").prop("checked", false);
+      $(this).find("input[type='text']").css({"text-decoration":"none"});
     });
 
     $.each(purchasedList, function(idx, value) {
       $(this).find("input[type='checkbox']").prop("checked", true);
+      $(this).find("input[type='text']").css({"text-decoration":"line-through"});
     });
   }
 
@@ -129,23 +149,8 @@ $(document).ready(function() {
     var purchased = localStorage.getItem("purchased");
     itemsOnList.html(items);
     purchasedList.html(purchased);
+    registerEnquire();
     ensureCheckboxStatesAreValid();     
   }
-
-  enquire.register("screen and (max-width: 800px)", {
-    // move the checkbox(es) below the text input
-    match: function() {
-      var allItems = $(".item");
-      $.each(allItems, function moveCheckbox(idx, value) {
-        $(this).find("input[type='checkbox']").insertAfter($(this).find("input[type='text']"));
-      });
-    },
-    unmatch: function() {
-      var allItems = $(".item");
-      $.each(allItems, function retainCheckbox(idx, value) {
-        $(this).find("input[type='checkbox']").insertBefore($(this).find("input[type='text']"));
-      });
-    }
-  });
 
 });

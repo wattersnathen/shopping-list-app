@@ -126,86 +126,132 @@ input[type="checkbox"] {
   margin-right: 0.52em;
 }
 
-input[type="checkbox"]:checked + input[type="text"] {
-  text-decoration: line-through;
-}
-
 input[type="text"] {
   width: 50%;
 }
 
-@media screen and (max-width: 500px) {
+/* Landscape phones and below */
+@media (max-width: 480px) {
   #container {
     width: 100%;
-    padding: 0.3em;
-    margin: 0 auto;
+    padding: 0.5em;
   }
   #page-header {
     width: 100%;
-    margin: 0 auto 0.5em auto;
   }
   #headline {
-    font-size: 2.5em;
-    padding: 0.2em;
+    font-size: 3em;
   }
   #menu-options {
     width: 100%;
-    margin: 0 auto 0.5em auto;
   }
   #menu-options li {
-    padding: 0.1em 0.5em;
-    font-size: 1em;
-  }
-  #enter-item {
-    width: 100%;
-    padding-bottom: 0.5em;
-    margin: 0;
+    display: inline;
+    padding: 0.3em;
+    margin: 0 0.4em 0.2em 0;
   }
   #no-item-entered-error {
-    margin: 0.5em;
-    padding: 0.5em;
-    font-size: 1.1em;
-  }
-  input[type="text"] {
-    width: 80%;
-    display: block;
-    margin: 0.2em auto;
-  }
-  input[type="number"] {
-    max-width: 2.5em;
-  }
-  input[type="checkbox"] {
-    margin-right: 0.75em;
-  }
-  input {
-    padding: 0.3em 0.75em;
-    font-size: 1em;
-    margin-right: 0.3em;
+    padding: 1.25em;
   }
   #sub-container {
     width: 100%;
   }
   #sub-container h2 {
-    font-size: 2.3em;
-    margin: 0;
+    font-size: 2.4em;
+    margin: 0 auto 0.2em auto;
     text-align: center;
+  }
+  input[type="text"] {
+    display: block;
+    width: 90%;
+    margin: 0 auto 0.25em auto;
+  }
+  input[type="number"] {
+    max-width: 2.5em;
+  }
+  input {
+    margin-right: 0.5em;
+  }
+  input[type="checkbox"] {
+    margin-right: 1em;
   }
 }
 
-@media screen and (min-width: 501px) and (max-width: 800px) {
+/* Landscape phone to portrait tablet */
+@media (min-width: 481px) and (max-width: 570px) {
   #container {
-    width: 98%;
+    width: 90%;
+    padding: 0.5em;
   }
   #page-header {
-    margin-bottom: 1.8em;
+    width: 100%;
+    margin-bottom: 0.75em;
   }
   #headline {
-    font-size: 3.3em;
+    font-size: 3.4em;
+    padding: 0.3em;
+  }
+  #menu-options {
+    width: 100%;
+    margin-bottom: 0.75em;
+  }
+  #sub-container {
+    width: 100%;
+  }
+  #sub-container h2 {
+    text-align: center;
+    margin-left: 0;
+    font-size: 2.8em;
+  }
+  input[type="text"] {
+    display: block;
+    width: 90%;
+    margin: 0 auto 0.25em auto;
+  }
+  input {
+    margin-right: 0.7em;
+  }
+  input[type="checkbox"] {
+    margin-right: 1.1em;
+  }
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 571px) and (max-width: 797px) {
+  #container {
+    width: 90%;
+    padding: 0.5em;
+  }
+  #page-header {
+    width: 100%;
+  }
+  #headline {
+    font-size: 4.2em;
   }
   #menu-options {
     width: 100%;
   }
-  #enter-item {
-    width: 80%;
+  input[type="button"] {
+    padding: 0.2em;
   }
+}
+
+@media (min-width: 798px) and (max-width: 1199px) {
+  #container {
+    width: 85%;
+    padding: 0.5em;
+  }
+  #page-header {
+    width: 90%;
+  }
+  #headline {
+    font-size: 4.8em;
+  }
+  input[type="button"] {
+    padding: 0.2em;
+  }
+}
+
+@media (min-width: 1200px) {
+
 }
