@@ -54,6 +54,7 @@ $(document).ready(function() {
     itemToAdd.focus();
     registerEnquire();
   }
+
   $("#add-button").on("click", function addOnClick(evt){addItem(evt);}); // end of #add-button click handler
 
   // Allow the user to press the enter key while focus is in enter-time to add items
