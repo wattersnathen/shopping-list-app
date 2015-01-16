@@ -18,7 +18,7 @@ html {
 body {
   height: 100%;
   font-family: Helvetica, sans-serif;
-  background-color: #D5F1F1;
+  background-color: #D6AD33;
   overflow-y: scroll;
 }
 
@@ -57,8 +57,9 @@ ul {
 #headline {
   font-size: 4.8em;
   text-align: center;
-  background: #A6CDCD;
+  background: #EAD699;
   border-radius: 50%;
+  padding: 0.25em 1em;
 }
 
 input:hover {
@@ -68,8 +69,8 @@ input:hover {
 
 input[type="button"]:hover,
 input[type="submit"]:hover {
-  background-color: #208181;
-  color: white;
+  background-color: #EAD699;
+  border: 1px solid black;
 }
 
 
@@ -84,7 +85,8 @@ input[type="submit"]:hover {
   display: inline-block;
   padding: 0.3em 1.5em;
   font-size: 1.25em;
-  background: #A6CDCD;
+  background: #EAD699;
+  border: 1px solid black;
 }
 
 /* Enter item section styling */
@@ -133,7 +135,7 @@ input:not([type="checkbox"]) {
 }
 
 input[disabled] {
-  background-color: #A6CDCD;
+  background-color: #EAD699;
 }
 
 input[type="number"] {
