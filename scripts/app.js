@@ -1,91 +1,157 @@
-$(document).ready(function(){
+$(document).ready(function() {
 
-  var listItem = "<li class='item ui-state-default'>" +
-                 "<input type='checkbox' name='checkbox'>" +
-                 "<input type='text' value='%data%'>" +
-                 "<input type='number' min='1' value='%qty%'>" +
-                 "<input type='button' value='Edit' name='btn-edit'>" +
-                 "<input type='button' value='Delete' name='btn-delete'>" +
-                 "</li>",
-      itemsList = $("#items"),          // list of items currently left to purchase
-      purchasedList = $("#purchased");  // list of items that have been purchased
+  var item =  "<li class='item'>" +           // the 'item' <li> to add to the DOM
+              "<input type='checkbox'>" +
+              "<input type='text' value='%data%' disabled='disabled'>" +
+              "<input type='number' min='1' value='%qty%' disabled='disabled'>" +
+              "<input type='button' value='Edit' class='btn-edit'>" +
+              "<input type='button' value='Delete' class='btn-delete'>" +
+              "</li>",
+      itemsOnList = $("#items-to-purchase"),  // list of items yet to be purchased (not checked off)
+      purchasedList = $("#items-purchased");  // list of items already purchased (checked off)
 
-  function addItemToList(item, quantity, list) {
-    var _item = item.val().trim(),
-        _qty  = quantity.val();
-    if(_item) {
-      list.append(listItem.replace("%data%", _item)
-                          .replace("%qty%", _qty));
-      item.val("");
-      quantity.val("1");
-    } else {
-      alert("Nothing to add");
-    }
-    item.focus();
-  }
+  function registerEnquire() {
+    enquire.register("(max-width: 570px)", {
+      match: function() {
+        var allItems = $(".item");
+        $.each(allItems, function (index, value) {
+          var checkbox = $(this).find("input[type='checkbox']"),
+              text = $(this).find("input[type='text']");
 
-  function areListsEmpty() {
-    if ($("#purchased li").length === 0) {
-      $("#items-purchased").hide();
-    } else {
-      $("#items-purchased").show();
-    }
-
-    if ($("#items li").length === 0) {
-      $("#items-to-purchase").hide();
-    } else {
-      $("#items-to-purchase").show();
-    }
-
-    // add and remove attributes
-    $(".item").each(function(index) {
-      $("#purchased input[type='text'], #purchased input[type='number']").attr("disabled", "disabled");
-      $("#items input[type='text'], #items input[type='number']").removeAttr("disabled");
+          // insert the checkbox after the text input
+          checkbox.insertAfter(text);
+          
+        });
+      }
+    });
+    enquire.register("(min-width: 571px)", {
+      match: function() {
+        var allItems = $(".item");
+        $.each(allItems, function (index, value) {
+          $(this).find("input[type='checkbox']").insertBefore($(this).find("input[type='text']"));
+        });
+      }
     });
   }
 
-  $("#add-button").click(function() {
-    addItemToList($("#entered-text"), $("#entered-quantity"), itemsList);
-    areListsEmpty();
-  });
-  
-  $("#items, #purchased")
-    .on("click", "input[name='btn-delete']", function() {
-      $(this).closest("li").remove();
-      areListsEmpty();
-  })
-    .on("click", "input[name='checkbox']", function() {
-      var item = $(this).closest("li"),
-          id = item.closest("ul").attr("id");
+  // Add item to itemsOnList when +Add is clicked...
+  function addItem(evt) {
+    var itemToAdd = $("#entered-item-text"),
+        itemQty   = $("#entered-item-quantity"),
+        trimedItem= itemToAdd.val().trim(),
+        trimedQty = itemQty.val();
+
+    if (trimedItem) {
+      itemsOnList.append(item.replace("%data%", trimedItem).replace("%qty%", trimedQty));
       
-      if (id === "items") {
-        $("#purchased").append(item);
-        
-      } else if (id === "purchased") {
-        $("#items").append(item);
+      // clear out the data in the entered item fields
+      itemToAdd.val("");
+      itemQty.val("1");
+    } else { // no text was entered into the text field, show error message
+      $("#no-item-entered-error").show().delay(1800).fadeOut(900); // don't leave error on screen for long
+    }
 
-      }
-      areListsEmpty();
-  })
-    .on("click", "input[name='btn-edit']", function() {
-      var input = $(this).closest("li"),
-          text = input.find("input[type='text']"),
-          number = input.find("input[type='number']");
-      if (text.attr("disabled")) {
-        text.removeAttr("disabled");
-      } else {
-        text.attr("disabled", "disabled");
-      }
+    itemToAdd.focus();
+    registerEnquire();
+  }
 
-      if (number.attr("disabled")) {
-        number.removeAttr("disabled");
-      } else {
-        number.attr("disabled", "disabled");
-      }
+  $("#add-button").on("click", function addOnClick(evt){addItem(evt);}); // end of #add-button click handler
+
+  // Allow the user to press the enter key while focus is in enter-time to add items
+  $("#enter-item").on("keydown", "input", function addOnEnter(evt){
+    if (evt.which == 13) {
+      addItem(evt);
+    }
+  });
+
+  // Add item to purchased list when checkbox is clicked
+  $(".items").on("click", "input[type='checkbox']", function changeList() {
+    var item = $(this).closest("li"),
+        listID = item.closest("ul").attr("id");
+
+    if(listID === "items-purchased") {
+      $("#items-to-purchase").append(item);
+
+    } else if (listID === "items-to-purchase") {
+      $("#items-purchased").append(item);
+    }
+
+    ensureCheckboxStatesAreValid();
+  });
+
+  // Remove 'item' from DOM when delete button is clicked
+  $(".items").on("click", ".btn-delete", function removeItemFromDOM() {
+    $(this).closest("li").remove();
+  });
+
+  function toggleDisabled() {
+    var input = $(this).closest("li"),
+        textField = input.find("input[type='text']"),
+        qtyField  = input.find("input[type='number']");
+
+    if (textField.attr("disabled")) {
+      textField.removeAttr("disabled");
+    } else {
+      textField.attr("disabled", "disabled");
+
+      // need to update the value attritube on the DOM otherwise the change will not save
+      textField.attr("value", textField.val());
+    }
+
+    if (qtyField.attr("disabled")) {
+      qtyField.removeAttr("disabled");
+    } else {
+      qtyField.attr("disabled", "disabled");
+
+      // need to update the value attritube on the DOM otherwise the change will not save
+      qtyField.attr("value", qtyField.val());
+    }
+  }
+
+  // Enabled list inputs when edit button is clicked. 
+  $(".items").on("click", ".btn-edit", toggleDisabled);
+  $(".items").on("dblclick", "input[type='text'], input[type='number']", toggleDisabled);
+
+  // Use jQuery-UI sortable to enable drag and drop between the two lists
+  $(".items").sortable({
+    cursor: "move",
+    opacity: 0.6,
+    connectWith: ".items",
+    scroll: false,
+    update: function changeCheckbox(event, ui) {
+      ensureCheckboxStatesAreValid();
+    }
+  });
+
+  function ensureCheckboxStatesAreValid() {
+    $.each(itemsOnList, function(idx, value) {
+      $(this).find("input[type='checkbox']").prop("checked", false);
+      $(this).find("input[type='text']").css({"text-decoration":"none"});
     });
 
-    $("#items, #purchased").sortable({
-      connectWith: ".connectedSortable",
-      cursor: "move"
+    $.each(purchasedList, function(idx, value) {
+      $(this).find("input[type='checkbox']").prop("checked", true);
+      $(this).find("input[type='text']").css({"text-decoration":"line-through"});
     });
+  }
+
+  $("#save-options").on("click", function saveLists() {
+    localStorage.setItem("items", itemsOnList.html());
+    localStorage.setItem("purchased", purchasedList.html());
+  });
+
+  $("#clear-options").on("click", function clearLists() {
+    localStorage.clear();
+    location.reload();
+  });
+
+  if (localStorage.getItem("items") && localStorage.getItem("purchased")) {
+    var items = localStorage.getItem("items");
+    var purchased = localStorage.getItem("purchased");
+    itemsOnList.html(items);
+    purchasedList.html(purchased);
+    registerEnquire();
+    ensureCheckboxStatesAreValid();     
+  }
+
 });
